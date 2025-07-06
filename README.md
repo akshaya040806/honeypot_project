@@ -88,10 +88,10 @@ def zeek_to_log(file):
         elif not line.startswith('#') and fields:
             values = line.strip().split('\t')
             entry = dict(zip(fields, values))
-            json_data.append(entry)
+            json_f.append(entry)
     return json_f
 
-def convert_log_to_json(in_dir, out_dir):
+def log_to_json(in_dir, out_dir):
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 
@@ -108,7 +108,7 @@ def convert_log_to_json(in_dir, out_dir):
 def main():
     input_logs = os.path.expanduser("~/project")       
     output_json = "zeek_json_file"
-    convert_all_logs_to_json(input_logs, output_json)
+    log_to_json(input_logs, output_json)
 
 if __name__=="__main__":
     main()
